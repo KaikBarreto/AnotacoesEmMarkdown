@@ -1,4 +1,4 @@
-fffont# __ANOTAÇÕES CURSO JAVASCRIPT__
+# __ANOTAÇÕES CURSO JAVASCRIPT__
 
 ## **Comandos var/let/const: declaração de variável**
 
@@ -6,8 +6,6 @@ fffont# __ANOTAÇÕES CURSO JAVASCRIPT__
 * ### parseInt | converter pra inteiro
 * ### parseFloat | converter para Real
 * ### String | converter para string 
-
-
 
 ***
 
@@ -75,11 +73,12 @@ while (condição=True) {
 
 * ### **Teste Lógico no Final**
 
-```javascript
-do {
-    realizarAção()
-} while (condição=True)
-```
+    ```javascript
+    do {
+        realizarAção()
+    } while (condição=True)
+    ```
+
 * ### **Exemplo**:
 
     ```javascript
@@ -124,18 +123,18 @@ for (inicio; teste; incremento) {
     
 * ### **Exemplo**:
 
-```javascript
-dados = {
-    nome:'Kaik', 
-    idade: 16, 
-    sexo: 'M', 
-    nacionalidade:'Brasileiro',
-    tossir: function() => {console.log("Cough Cough!")}
-}
+    ```javascript
+    dados = {
+        nome:'Kaik', 
+        idade: 16, 
+        sexo: 'M', 
+        nacionalidade:'Brasileiro',
+        tossir: function() => {console.log("Cough Cough!")}
+    }
 
-console.log(dados.) //  <= Retorna 'Kaik'
-dados.tossir() // Retorna 'Cough Cough!'
-```
+    console.log(dados.) //  <= Retorna 'Kaik'
+    dados.tossir() // Retorna 'Cough Cough!'
+    ```
 
 ***
 
@@ -174,22 +173,23 @@ let resultado = parimp(11)  // chamada, retorno = "ÍMPAR!"
 
 * ### **Exemplo**:
 
-```javascript
-function sayMyName(name) {
-    
-    if(name === '') { // Validação
-        throw "Nome não digitado" // O que será "jogado"
+    ```javascript
+    function sayMyName(name) {
+        
+        if(name === '') { // Validação
+            throw "Nome não digitado" // O que será "jogado"
+        }
+
+        console.log(name)
     }
 
-    console.log(name)
-}
+    try {
+        sayMyName('')
+    } catch(e) { // Capta o que foi jogado pelo throw
+        console.log(e) // Imprime o que foi captado 
+    }
+    ```    
 
-try {
-    sayMyName('')
-} catch(e) { // Capta o que foi jogado pelo throw
-    console.log(e) // Imprime o que foi captado 
-}
-```    
 ***
 
 # <center><font color="orange">**Estrutura de dados com JavaScript**</font></center>
@@ -449,7 +449,7 @@ fila.dequeue() // Ariel saiu da fila! =>   []
 
 # <center>**<font color="orange">Conceitos da POO</font>**</center>
 
-## [**<font color="magenta">OBJETOS</font>**]
+## <font color="magenta">[**OBJETOS**]</font>
 
 * ### **Todo objeto possui:**
 
@@ -465,7 +465,7 @@ fila.dequeue() // Ariel saiu da fila! =>   []
   
 ***
 
-## [**<font color="magenta">CLASSES</font>**]
+## <font color="magenta">[**CLASSES**]</font>
 
 * ### As classes na orientação a objetos funcionam como um molde para os objetos. Os objetos são criados a partir de uma classe e muitos deles podem ser feitos da mesma classe.
 
@@ -563,13 +563,61 @@ console.log(poligono.area) // retorno: 3000   (50 * 60)
 
 ***
 
-## **[<font color="magenta">Herança</font>]**
+## **<font color="magenta">[Herança]</font>**
 
 * ### Pais e filhos (hereditariedade)
 
 * ### Objetos podem herdar ou estender características base
 
 * ### Uma cópia de atributos e métodos de outra classe
+
+* ### Palavra-chave <font color="cyan">**SUPER( )**</font>:
+
+  * ### Refere-se à classe mãe (superclasse) e busca a característica ou método pré-definidos na mesma
+
+    * ### Ou seja, ao digitar <font color="orange">super(name)</font> no constructor de uma subclasse, se estará herdando a característica nome da superclass
+
+  * ### Muito similar à palavra-chave <font color="orange">**this**</font>
+
+  * ### Exemplo: 
+
+    ```javascript
+    class Person{ // superclass
+        constructor(name, age) {
+            this.name = name
+            this.age = age
+        }
+
+        hello() {
+            console.log(`Hello, ${this.name}!`)
+            console.log(`You are ${this.age} years old!`)
+        }
+    }
+
+    class Student extends Person{ // subclass
+        constructor(name, age, nota) {
+            super(name, age)
+            this.nota = nota
+        }
+
+        hello(){
+            super.hello()
+            console.log(`Sua nota é ${this.nota}`)
+        }
+    }
+
+    class Teacher extends Person{ // subclass
+        constructor(name, age, classSize) {
+            super(name, age)
+            this.classSize = classSize
+        }
+
+        hello(){
+            super.hello()
+            console.log(`Sua turma tem ${this.classSize} alunos.`)
+        }
+    }
+    ```
 
 ## **<font color="orange">Herança no JavaScript</font>**
 
@@ -588,3 +636,424 @@ class Moto extends Veiculo {
     }
 } // A classe Moto é uma classe filha de Veiculo, onde Moto possui todas as características e funcionalidades de Veiculo, porém alterando a caracteristica "rodas" para 2.
 ```
+
+***
+
+## **<font color="magenta">[Polimorfismo]</font>**
+
+* ### Significa "**muitas formas**"
+
+* ### Quando um objeto estende de outro (**Herança**) talvez haja a necessidade de reescrever uma ou mais características (**Atributos e Métodos**) nesse novo objeto. 
+
+## **<font color="orange">Polimorfismo no JavaScript</font>**
+
+### **Construção da classe mãe**
+
+```javascript
+class Atleta {
+    let peso 
+    let categoria
+
+    constructor(peso) {
+        this.peso = peso
+    }
+
+    definirCategoria() {
+        if (this.peso <= 50) {
+            this.categoria = "Infantil"
+        }
+        else if(this.peso <= 65) {
+            this.categoria = "Juvenil"
+        }
+        else {
+            this.categoria = "Adulto"
+        }
+    }
+}
+```
+
+### **Construção da classe filha**
+
+```javascript
+class Lutador extends Atleta {
+    constructor(peso){
+        super(peso)
+    }
+
+    definirCategoria() {
+        if (this.peso <= 54) {
+            this.categoria = "Pluma"
+        }
+        else if(this.peso <= 60) {
+            this.categoria = "Leve"
+        }
+        else if(this.peso <= 75) {
+            this.categoria = "Meio-Leve"
+        } 
+        else {
+            this.cateooria = "Pesado"
+        }
+    }
+}
+```
+
+***
+
+## **<font color="magenta">[Abstração]</font>**
+
+### Template ou identidade de uma classe que será construída no futuro
+
+* ### Atributos e métodos podem ser criados na classe de Abstração (Superclasse) **MAS**
+
+* ### A implementação dos métodos e atributos só poderá ser feita na classe que irá herdar essa Abstração
+
+## **<font color="orange">Abstração no JavaScript</font>**
+
+```javascript
+class Parafuso { // Superclasse - Abstrata
+    constructor() {
+        if (this.constructor === Parafuso){
+            throw new Error("Classe abstrata não pode ser instanciada")
+        }
+        get tipo() {
+            throw new Error('Método "get tipo()" precisa ser implementado')
+        }
+    }
+}
+
+class Fenda extends Parafuso { // classe filha
+    constructor() { super() }
+
+    get tipo() { // retorna a característica "tipo" do objeto criado pela classe filha
+        return "Fenda"
+    }
+}
+
+class Phillips extends Parafuso { // classe filha
+    constructor() { super() }
+
+    get tipo() {
+        return "Phillips"
+    }
+}
+
+class Allen extends Parafuso {}
+
+// Criar e usar
+new Parafuso() // "Classe abstrata não pode ser instanciada"
+let fenda = new Fenda()
+let phillips = new Phillips()
+let allen = new Allen()
+
+console.log(fenda.tipo, phillips.tipo) // Fenda Phillips
+console.log(allen.tipo) // 'Método "get tipo()" precisa ser implementado'
+```
+
+***
+
+# <font color="orange"><center>**Programação Funcional**<center></font>
+
+### É um paradigma de programação como a Orientação a Objetos: uma forma de raciocinar e resolver um problema.
+
+## **<font color="magenta">[Funções]</font>**
+
+* ### Pequenas tarefas dentro de uma função
+
+* ### Abstrair um problema e resolvê-lo dentro da função
+
+* ### Não modificar dados fora dela
+
+* ### Pequenas e bem específicas no que fazem
+
+## **<font color="cyan">Características principais</font> da função**
+
+1. ### Um <font color="cyan">**dado**</font> (ou mais) <font color="cyan">**entra**</font> em uma função e um <font color="cyan">**novo dado sai**</font> dessa função
+
+2. ### Não altera dados
+
+3. ### Não guarda estado (<font color="red">**stateless**</font>)
+
+## **Pontos positivos do paradigma funcional**
+
+1. ### Fácil manutenção
+
+2. ### Fácil uso de testes
+
+    * ### Funções isoladas e consistentes 
+
+3. ### Códigos mais confiáveis
+
+***
+
+# **<font color="orange">Princípios</font>**
+
+## **Paradigmas**
+
+* ### Programação Imperativa
+
+* ### Programação Declarativa
+
+## **Dados**
+
+* ### Imutabilidade 
+
+* ### Stateless
+
+## **Funções**
+
+* ### Independentes
+
+* ### Puras
+
+* ### Higher-order
+
+* ### First-class
+
+* ### Composição
+
+***
+
+## **<center><font color="cyan">PARADIGMAS</font>**
+
+# <font color="orange">Programação Imperativa vs Declarativa</font>
+
+## [**Programação <font color="cyan">Imperativa</font>**]
+
+* ### O código é <font color="magenta">**pensado e gerado em sequência**</font>
+
+* ### O código é pensado como um passo a passo, como uma <font color="magenta">**receita de bolo**</font>
+
+* ### Uma coisa depende da outra
+
+* ### O estado de um dado é <font color="magenta">**alterado constantemente**</font> causando mutação nas variáveis
+
+* ### <font color="magenta">**Orientação a Objetos**</font> é um paradigma imperativo
+
+***
+
+## [**Programação <font color="cyan">Declarativa</font>**]
+
+* ### O código é gerado para <font color="magenta">**fazer algo**</font>, não importa <font color="magenta">**como**</font>
+
+* ### <font color="magenta">**O quê fazer**</font> e não **como fazer**
+
+* ### Não há necessidade de um <font color="magenta">**passo a passo**</font> no código
+
+* ### <font color="magenta">**Programação Funcional**</font> é um paradigma declarativo
+
+## **Exemplo prático**:
+
+* ### Função que eleva número ao quadrado
+
+    ```javascript
+    // Imperativa: "Faça da seguinte forma"
+    let number = 2
+    function square() {
+        return number * number
+    }
+
+    number = square()
+
+    // Declarativa: "O QUÊ fazer e não COMO fazer"
+    const square = n => n * n
+    ```
+***
+
+# **<center><font color="cyan">DADOS</font>**
+
+## <font color="magenta">[**Imutabilidade**]</font>
+
+* ### Uma variável não pode variar
+
+* ### Se for preciso mudar uma variável, **cria-se uma nova**, ao invés de mudá-la.
+
+* ### **Uso de constantes**
+
+```javascript
+// exemplo em JS
+const cart = {
+    quantity: 2,
+    total: 200
+}
+
+// errado
+cart.quantity = 3
+
+// certo
+const newCart = {...cart, quantity: 3}
+
+// exemplo em ReactJS
+const [amount, setAmount] = useState(0)
+
+// errado
+amount = 2
+
+// certo
+setAmount(2)
+```
+## <font color="magenta">[**Stateless**]</font>
+
+* ### Não guarda **<font color="cyan">estado</font>**
+
+* ### A função só conhece dados entregues a ela
+
+* ### A resposta não poderá variar
+
+
+    ```javascript 
+    let number = 2
+
+    // stateful function
+    function square() {
+        return number * number
+    }
+    number = square()
+
+    // stateless function
+    const square = n => n * n
+    ```
+
+***
+
+# **<center><font color="cyan">FUNÇÕES</font>**
+
+## <font color="magenta">[**Independentes**]</font>
+
+* ### Deverão ter ao menos 1 **argumento**
+
+* ### Deverão **retornar** algo
+
+* ### Representam um ciclo de vida curto para uma função
+
+* ### Nada do que acontecer no seu interior afetará o exterior
+
+    * ### dados imutáveis
+
+    * ### não guardar estado
+
+* ### Não far-se-á uso de loops (<font color="cyan">for, while</font>), mas se houver necessidade de tal, usaremos recursão (a função chama ela mesma)
+
+```javascript
+const random = (number, Math) => Math.floor(Math.random() * number)
+
+// recursive
+// Find the fatorial of a number
+const factorial = x => {
+
+    // if number is 0
+    if(x === 0) {
+        return 1
+    }
+    return x * factorial(x - 1)
+}
+```
+***
+
+## <font color="magenta">[**Funções Puras**]</font>
+
+* ### Não deverá <font color="cyan">depender de nenhum dado externo</font> a não ser o que foi passado como argumento
+
+* ### Não deverá sofrer <font color="cyan">nenhuma interferência</font> do exteriro a ela
+
+* ### Se o argumento é o mesmo, <font color="cyan">o retorno não poderá ser diferente</font> quando a função for chamada novamente
+
+* ### Não terá <font color="cyan">efeito colateral nenhum</font> no código
+
+    * ### Não irá modificar nenhum dado
+
+    * ### Não irá guardar nenhum estado
+
+* ## **Função Impura**
+
+    ```javascript
+
+    // exemplo 1: está dependendo de dado externo que não foi passado como parâmetro
+    function calculateCircumference(radius) {
+        return Math.PI * (radius + radius)
+    }
+
+    // exemplo 2: está alterando um dado externo
+    let person = {
+        name: "Rafael Camarda",
+        age: "Jovem"
+    }
+
+    function changeName(name) {
+        person.name = name
+    }
+    ```
+
+* ## **Função Pura**
+
+```javascript
+// exemplo 1:
+const calculateCircumference(radius, pi) {
+    return pi * (radius + radius)
+}
+
+// com arrow function:
+const calculateCircumference(radius, pi) => pi * (radius + radius)
+
+// exemplo 2:
+const changePersonName = (person, name) => ({....person, name})
+```
+
+***
+
+## <font color="magenta">[**First-class function**]</font>
+
+* ### Podem estar em qualquer lugar da aplicação, inclusive como parâmetro de outras funções
+
+* ### A função poderá ser <font color="cyan">entendida como uma variável</font>
+  
+    ```javascript
+    const sayMyName = () => console.log("Mayk")
+    const runFunction = fn => fn()
+
+    runFunction(sayMyName) // Mayk
+    runFunction(() => console.log("Discover")) // Discover
+
+    console.log(runFunction(Math.random))
+    ```
+
+***
+
+## <font color="magenta">[**Higher-order function**]</font>
+
+* ### São funções que <font color="cyan">recebem funções</font> como argumentos
+
+* ### Essas funções poderão <font color="cyan">retornar outras funções</font>
+
+```javascript
+// Exemplo com .map() JS
+const numbers = [2, 4, 8, 16]
+
+const square = n => n * n
+
+const squaredNumber = numbers.map(square)
+
+// Exemplo de retorno de função
+// (currying ou aplicação parcial de função)
+const pause = wait => fn => setTimeout(fn, wait)
+
+pause(600)( () => console.log('waiting 600ms') )
+
+const wait200 = pause(200)
+const wait1000 = pause(1000)
+
+wait200(() => console.log("waiting 200ms") )
+wait1000(() => console.log("waiting 1s") )
+``` 
+
+***
+
+## <center><kbd><font color="lime" size="10">Composição de funções</font></kbd></center>
+
+* ### Um <font color="cyan">**encadeamento**</font> de funções, ou seja, uma sendo executada atrás da outra
+
+* ### Uma função que retorna um dado e vai para outra função, que retorna um dado e vai para outra função, que retorna...
+
+    ```javascript
+    const people = ["Rafa", "Diego", "Dani", "Rod"]
+    const upperCasePeopleWhoseNameStartsWithD = people.filter(person => person.startsWith("D")).map(dperson => dperson.toUpperCase())
+    ```
