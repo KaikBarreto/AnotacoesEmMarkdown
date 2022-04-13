@@ -1,4 +1,4 @@
-# **<font color="lightblue">SQL e Banco de dados</font>**
+# **<center><font size="10"  color="lightblue">SQL e Banco de dados</font></center>**
 
 ## **<center>O que é um banco de dados?</center>**
     Um banco de dados nada mais é do que um Repositório sistêmico de informações

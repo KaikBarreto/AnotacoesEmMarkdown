@@ -1,4 +1,4 @@
-# __ANOTAÇÕES CURSO JAVASCRIPT__
+# **<center><font size="10"  color="lightblue">JavaScript</font></center>**
 
 ## **Comandos var/let/const: declaração de variável**
 
