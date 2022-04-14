@@ -227,7 +227,42 @@
 
     > **<kbd><font color="cyan">git log --grep="bugfix"</font></kbd>**
 
-*** 
+## **git show**
+
+
+* ### É usado para imprimir no terminal as mudanças realizadas em determinado commit.
+
+* ### **Sintaxe**:
+
+    > ### **<kbd><font color="cyan">git show hash_do_commit</font></kbd>**
+
+    * ### Exemplo: Mostrar as mudanças realizadas no commit cuja hash se inicia por **[abcd1234]**:
+
+        > ### **<kbd><font color="cyan">git show abcd1234</font></kbd>**
+
+        * ### **Saída:** Todas as mudanças realizadas neste ponto da história (commit).
+
+    ***
+
+    * ## Mostrar apenas as **PALAVRAS** alteradas, usando o parâmetro **[--color-words]**:
+
+        > ### **<kbd><font color="cyan">git show --color-words</font></kbd>**
+
+      * ### **Saída:** As palavras que foram alteradas neste ponto da história (commit).
+
+    ***
+
+    * ## **Mostrar apenas as alterações de um arquivo**:
+
+        > ### **<kbd><font color="cyan">git show -- caminho_do_arquivo</font></kbd>**
+
+        * ### **Saída:** As alterações que foram realizadas neste ponto da história (commit) apenas para o arquivo ou pasta especificado.
+
+        * ### Pode-se selecionar as alterações de todos os arquivos de uma pasta, digitando "*" após o caminho da mesma:
+
+            > ### **<kbd><font color="cyan">git show -- caminho_da_pasta/*</font></kbd>**
+
+***
 
 ## **_<font size=6 color="Orange"><center>Estágios do arquivo</font>_**
 
@@ -448,4 +483,14 @@ git add .  // adicionar todas as alterações ao repositório
         * ### **<kbd><font color="cyan">git revert HEAD~5</font></kbd>**    
 
         * ### **Leia-se**: reverter o commit 5 posições antes de onde está o **HEAD**
+
+***
+
+## <font size=6 color="orange">**Ignorando arquivos e diretórios indesejados**</font>
+
+* ### Pode-se incluir caminho do arquivo ou diretório para que este seja ignorado pelo Git, uma vez que não seja pertinente ao projeto. 
+
+* ### Para ignorar pastas, o ideal é colocar uma barra após seu nome, para indicar que se trata de um diretório. **<kbd><font size=5 color="cyan">"documents/git-aula/pasta/"</font></kbd>**
+
+* ### Uma vez que um arquivo ou pasta esteja no arquivo **_.gitignore_**, este será deletado quando houverem commits.
 
