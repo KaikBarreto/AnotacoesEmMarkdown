@@ -327,9 +327,125 @@ git add .  // adicionar todas as alterações ao repositório
 * ### **Exemplo prático:**
 
     ```javascript
+   
+   
+   
+   
     mkdir pasta   // criando a pasta de destino
 
     git mv arquivo.txt pasta/arquivo.txt  // renomeando o endereço do arquivo para dentro da pasta
     ```
 
 ***
+
+## <font size=6 color="orange">**Desfazer mudanças**</font>
+
+* ## Desfazendo no Working Directory:
+
+    * ### O arquivo foi alterado e ainda não foi preparado (git add) para o commit, ou seja, está no **Working Directory**
+
+    * ### Utilizando **<kbd><font color="cyan">git restore arquivo.txt</font></kbd>**, as alterações feitas serão descartadas.
+
+    ***
+
+* ## Retornando da Stage Area:
+
+    * ### O arquivo foi alterado e já foi preparado (git add) para o commit, ou seja, está na **Stage Area**
+
+    * ### Utilizando <kbd><font color="cyan">git restore --staged arquivo.txt</font></kbd> podemos trazer o arquivo de volta para o Working Directory
+
+      * #### Ou <kbd><font color="cyan">git restore --staged .</font></kbd> para retornar todos.
+
+    * ### Também é possível utilizar <kbd><font color="cyan">git reset HEAD .</font></kbd> para retornar todos os arquivos da Stage Area para o Working Directory
+
+    *** 
+
+* ## Corrigindo **O ÚLTIMO** commit:
+
+  * ### Usamos "--amend" para corrigir
+  
+    * ### **<kbd><font color="cyan">git commit --amend</font></kbd>**
+
+* ### **Exemplo**:
+
+    ### Fazer alterações em um commit e depois "recommitá-lo"
+
+    > ### <kbd><font color="cyan">git commit --amend -m "nome_do_commit"</font></kbd>
+    > ### *Faz as alterações* <br>
+    > ### <kbd><font color="cyan">git commit --amend</font></kbd>
+
+    * ### Resultado: o commit anterior passou a ter novas alterações nos arquivos
+
+    ***
+
+    * ### Também é possível mudar o nome de um commit 
+
+        > ### <kbd><font color="cyan">git commit --amend -m "novo_nome_do_commit"</font></kbd>
+
+        * ### Resultado: o commit anterior passou a ter um novo nome
+
+    ***
+
+    * ### Desta forma, é possível unir as duas técnicas e mudar tanto os arquivos de um commit, como seu nome.
+
+***
+
+
+## <font size=6 color="orange">**Recuperando arquivos**</font>
+
+* ### **<kbd><font size=6 color="cyan">git ckeckout</font></kbd>**
+
+    * ### Permite trazer arquivos de um determinado commit para o ambiente em que se está trabalhando
+
+    * ### **Sintaxe**:
+
+        > ### **<font size=4 color="cyan">git ckeckout  abcd1234 -- arquivo.txt</font>**
+
+        * ### **Leia-se:** trazer o arquivo [arquivo.txt] para o ambiente atual [--], vindo do commit de hash [abcd1234]
+
+***
+
+## <font size=6 color="orange">**Removendo arquivos não rastreados**</font>
+
+* ### **<kbd><font size=6 color="cyan">git clean</font></kbd>**
+
+    * ### Permite remover todos os arquivos não rastreados, ou seja, que não estejam na **Stage Area**
+
+    * ### Permanente e irreparável
+
+    * ### **Sintaxe**:
+
+        * ### **<kbd><font color="cyan">git clean -f</font></kbd>**
+
+          * #### -f serve para forçar a execução do comando, uma vez que este é, como já dito, irreparável
+
+        ***
+
+    * ### É possível ver o que aconteceria com o comando git clean, uma espécie de prévia:
+
+    * ### **<kbd><font color="cyan">git clean -n</font></kbd>**
+
+    ### Saída: 
+
+    ```bash
+    git clean -n
+    Would remove arquivo1.txt
+    Would remove arquivo2.txt
+    ```
+
+    ### Leia-se: "Iria remover os arquivos 1 e 2."
+    
+***
+
+## <font size=6 color="orange">**Revertendo um commit**</font>
+
+* ### **<kbd><font size=6 color="cyan">git revert</font></kbd>**
+
+    * ### Para este comando, o diretório (working tree) deve estar limpo (git status para checar)
+
+    * ### **Sintaxe**:
+
+        * ### **<kbd><font color="cyan">git revert HEAD~5</font></kbd>**    
+
+        * ### **Leia-se**: reverter o commit 5 posições antes de onde está o **HEAD**
+
