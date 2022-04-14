@@ -286,7 +286,10 @@
 
 # <center>**<font size=10 color="orange">Hash Values (SHA-1)</font>**
 
-![diagrama das hash values](./Captura%20de%20tela%202022-04-12%20183423.png)
+<center>
+
+![diagrama das hash values](./hash.png)
+</center>
 
 ***
 
@@ -294,7 +297,7 @@
 
 * ### É um ponteiro, que apontará em que momento da história (commit) estamos situados
 
-![](./Captura%20de%20tela%202022-04-12%20184907.png)
+![](./head.png)
 
 *** 
 
