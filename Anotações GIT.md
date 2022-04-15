@@ -227,8 +227,9 @@
 
     > **<kbd><font color="cyan">git log --grep="bugfix"</font></kbd>**
 
-## **git show**
+***
 
+## <font color="orange">[**git show**]</font>
 
 * ### É usado para imprimir no terminal as mudanças realizadas em determinado commit.
 
@@ -496,4 +497,81 @@ git add .  // adicionar todas as alterações ao repositório
 * ### Para ignorar pastas, o ideal é colocar uma barra após seu nome, para indicar que se trata de um diretório. **<kbd><font size=5 color="cyan">"documents/git-aula/pasta/"</font></kbd>**
 
 * ### Uma vez que um arquivo ou pasta esteja no arquivo **_.gitignore_**, este será deletado quando houverem commits.
+
+***
+
+# **<font size=6 color="magenta">Utilizando o git para fazer upload no repositório remoto (github)</font>**
+
+## Passo a passo:
+
+
+* ## <font color="orange">_Criando um repositório local_</font>
+
+    <font color="cyan">
+
+    > ### mkdir pasta_do_repositorio
+    > ### cd pasta_do_repositorio  
+    > ### git init
+    > ### * faz as alterações *
+    > ### git commit -m "nome_do_repositorio"
+
+    </font>
+
+    ***
+
+* ## <font color="orange">_Linkando um repositório remoto com local_</font>
+
+    <font color="cyan">
+
+    > ### git remote add origin https://github.com/kaikbarreto/nome_do_projeto.git
+    > ### git branch -M main
+    > ### git push -u origin main
+
+    </font>
+
+    * ### Uma vez que estas configurações tenham sido feitas, basta digitar <kbd><font color="cyan">**git push**</font></kbd> para dar um push da branch atual para o repositório remoto.
+
+    ***
+
+* ## <font color="orange">_Trazendo ao repositório local as alterações_</font>
+
+  * ### Uma alteração foi feita diretamente no repositório remoto (github) e deseja-se trazer essa alteração para o repositório local.
+
+  * ### **Basta executar o comando <kbd><font color="cyan">git pull</font></kbd> para trazer todas as alterações do commit que está na nuvem**
+
+***
+
+# <center>**<font color="magenta">_Relembrando os comandos do repositório remoto_</font>**
+
+## <font color="orange">[**git push**]</font>
+
+* ### **Enviar** os commits do **repositório local** para o **repositório remoto**
+
+***
+
+## <font color="orange">[**git pull**]</font>
+
+* ### **Trazer** os commits do **repositório remoto** para o **repositório local**
+
+* ### Exemplo de uso: trazer os commits realizados por outra máquina ao repositório remoto para o repositório local atual.
+
+***
+
+## <font color="orange">[**git clone**]</font>
+
+* ### **Clonar** um **repositório remoto** para a máquina atual, criando um **repositório local**
+
+* ### **Sintaxe:**
+
+    > ### **<kbd><font color="cyan">git clone endereço_do_repositório</font></kbd>**
+
+***
+
+## <font color="orange">[**git merge**]</font>
+
+* ### **Mesclar**/misturar/fundir as alterações: trazer as do repositório remoto para a máquina local e vice-versa, podendo ocasionar conflitos a serem resolvidos.
+
+* ### O conflito pode ser oriundo de alterações no mesmo documento, nas mesmas linhas como uma contradição. O conflito pode ser resolvido no Visual Studio Code, analisando cada uma das alterações conflitantes e escolhendo qual prevalecerá no **Merge**.
+
+* ### Após a correção do conflito, faz-se um novo commit com a alteração prevalecente, e um novo git push.
 
