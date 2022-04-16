@@ -350,10 +350,137 @@
 
     ***
 
-* ## **<font color="orange">[Request]</font>**
+## **<font color="orange">[Request]</font>**
 
+* ## Request Line
 
+    * ### Method
+
+    * ### Protocol Version
+
+    * ### URI
+
+* ## Body
+
+* ## Headers
 
     ***
 
-* ## **<font color="orange">[Response]</font>**
+## **<font color="orange">[Response]</font>**
+
+* ## Protocol Version
+
+* ## Status Code
+
+* ## Header
+
+* ## Status message
+
+***
+
+# <center><font size=10 color="orange">_HTTP METHODS_</font>
+
+* ## Define um conjunto de métodos HTTP
+
+* ## Indica a ação que o cliente deseja operar
+
+* ## Podem ser chamados de **Verbos HTTP**
+
+* ## Cada um possui a sua semântica
+
+* ## **_Características_**: 
+
+    * ## Seguro
+
+        * ### Não altera o estado do servidor
+
+        * ### Somente leitura
+
+        * ### Cliente não solicita alterações
+
+        * ### Não há carga extra para o servidor
+
+        * ### O servidor é responsável em manter o método seguro
+
+        * ### Quais são?:
+
+            * ### GET -> GET/search.html HTTP/1.1
+
+            * ### HEAD
+
+            * ### OPTIONS
+
+        ***
+
+    * ## Idempotente
+
+        ## <center><img src="idempotence.png">
+
+        * ### Ao executar o método, a resposta deverá ser sempre a mesma    
+
+        * ### Quais são?:
+
+            * ### _Todos os seguros são idempotentes_
+
+            * ### PUT
+
+            * ### DELETE
+
+        * ### Status code poderá ser diferente
+
+        * ### O servidor tem a responsabilidade de retornar dados da mesma maneira
+
+        * ### Essa especificação não é garantia de que todos os servidores irão aplicar o conceito corretamente
+
+***
+
+## **<font color="orange">[OPTIONS]</font>**
+
+* ## Informações sobre disponibilidade da requisição
+
+    * ### Exemplos:
+
+        > ### OPTIONS /index.html HTTP/1.1
+        > ### OPTIONS * HTTP/1.1
+
+* ## **_Características:_**
+
+    * ### Seguro: SIM
+
+    * ### Idempotente: SIM
+
+    * ### BODY
+
+        * #### REQUEST: NÃO
+
+        * #### RESPONSE: NÃO
+
+    * ### Uso em formúlários HTML: NÃO
+
+    * ### Cacheable: NÃO
+
+***
+
+## **<font color="orange">[GET]</font>**
+
+* ## **Pegar** um recurso
+
+* ## Somente recebe dados
+
+* ## **_Características:_**
+
+    * ### Seguro: SIM
+
+    * ### Idempotente: SIM
+
+    * ### BODY
+
+        * #### REQUEST: NÃO
+
+        * #### RESPONSE: SIM
+
+    * ### Cacheable: SIM
+
+    * ### Uso em formúlários HTML: SIM
+
+***dssad
