@@ -483,4 +483,299 @@
 
     * ### Uso em formúlários HTML: SIM
 
-***dssad
+***
+
+## **<font color="orange">[HEAD]</font>**
+
+* ## Semelhante ao GET, porém...
+
+* ## ... recebemos apenas o cabeçalho 
+
+    > ### HEAD /posts
+
+* ## **_Características:_**
+
+    * ### Seguro: SIM
+
+    * ### Idempotente: SIM
+
+    * ### BODY
+
+        * #### REQUEST: NÃO
+
+        * #### RESPONSE: NÃO
+
+    * ### Uso em formúlários HTML: NÃO
+
+    * ### Cacheable: SIM
+
+***
+
+## **<font color="orange">[POST]</font>**
+
+* ## **Publicar/Cadastrar** um recurso
+
+* ## **_Características:_**
+
+    * ### Seguro: NÃO
+
+    * ### Idempotente: NÃO
+
+    * ### BODY
+
+        * #### REQUEST: SIM
+
+        * #### RESPONSE: SIM
+
+    * ### Uso em formulários HTML: SIM
+
+    * ### Cacheable: sim
+
+***
+
+## **<font color="orange">[PUT]</font>**
+
+* ## Atualiza um recurso ou cria um novo
+
+
+    > ### PUT /profile HTTP/1.1
+
+    * ### Diferença entre PUT e POST?
+
+      * #### **POST: Mais usado para criar**
+
+      * #### **Put: Mais usado para atualizar**
+    
+    * ### Criação -> Status Code 201 
+
+    * ### Atualização -> Status Code 204 ou 200
+
+
+* ## **_Características:_**
+
+    * ### Seguro: NÃO
+
+    * ### Idempotente: SIM
+
+    * ### BODY
+
+        * #### REQUEST: SIM
+
+        * #### RESPONSE: NÃO
+
+    * ### Uso em formúlários HTML: NÃO
+
+    * ### Cacheable: NÃO
+
+*** 
+
+## **<font color="orange">[PATCH]</font>**
+
+* ## Modificação parcial/pontual de um recurso
+
+    * ### Diferença entre o PUT e o PATCH
+
+        * #### Enquanto o PUT serve para alterar um recurso por inteiro, o PATCH serve para alterar somente parcialmente.
+
+            * #### Exemplo: usar o PATCH para alterar apenas um id a cada vez que for utilizado
+
+        * #### O PATCH pode não ser idempotente.
+
+    > ### PATCH /posts/1 HTTP/1.1
+
+* ## **_Características:_**
+
+    * ### Seguro: NÃO
+
+    * ### Idempotente: NÃO
+
+    * ### BODY
+
+        * #### REQUEST: SIM
+
+        * #### RESPONSE: SIM
+
+    * ### Uso em formúlários HTML: NÃO
+
+    * ### Cacheable: NÃO
+
+***
+
+## **<font color="orange">[Delete]</font>**
+
+* ## Usado para **remover** um recurso
+
+    > ### DELETE /posts HTTP/1.1
+
+    * ### Status code
+
+        * #### 202: accepted
+
+        * #### 204: no content
+
+        * #### 200: OK
+
+* ## **_Características:_**
+
+    * ### Seguro: NÃO
+
+    * ### Idempotente: SIM
+
+    * ### BODY
+
+        * #### REQUEST: POSSIVELMENTE
+
+        * #### RESPONSE: POSSIVELMENTE
+
+    * ### Uso em formúlários HTML: NÃO
+
+    * ### Cacheable: NÃO
+
+***
+
+# <center><font size=10 color="orange">_HTTP HEADERS_</font>
+
+* ## Cabeçalhos
+
+* ## Informações adicionais para o pedido ou resposta 
+
+* ## Nome: Valor   / Property: Value / Key: Value
+
+    * ### Exemplos:
+
+        * ### content-type: application/json
+
+        * ### Content-Type: text/html
+
+***
+
+# <center>**_Dividindo Headers por contextos_**</center>
+
+## **<font color="orange">[GENERAL]</font>**
+
+* ## **Request URL** 
+
+    * ### https://www.google.com/
+
+* ## **Request Method**
+
+    * ### GET
+
+* ## **Status Code**
+
+    * ### 200, 204, 301 etc.
+
+* ## **Remote Adress**
+
+    * ### 172.217.173.110:443
+
+* ## **Referrer Policy**
+
+    * ### strict-origin-when-cross-origin
+
+***
+
+## **<font color="orange">[REQUEST HEADERS]</font>**
+
+* ## **:authority:**
+
+    * ### google.com
+
+* ## **:method:**
+
+    * ### GET
+
+* ## **:path:**
+
+    * ### /
+
+* ## **:scheme:**
+
+    * ### https
+
+* ## **accept:**
+
+    * ### text/html, application/json, image/png etc.
+
+* ## **accept-encoding:**
+
+    * ### gzip, deflate, br
+
+* ## **accept-language:**
+
+    * ### en-US ; pt-BR
+
+* ## **cache-control:**
+
+    * ### no-cache
+  
+* ## entre outros...
+
+
+***
+
+## **<font color="orange">[RESPONSE HEADERS]</font>**
+
+* ## **cache-control:**
+
+    * ### public, max-age=2592000
+
+* ## **content-encoding:**
+
+    * ### br
+
+* ## **content-length:**
+
+    * ### 220
+
+* ## **content-type:**
+
+    * ### text/html; charset=UTF-8
+
+* ## **date:**
+
+    * ### Fri, 16 Apr 2022 02:58:00 GMT
+
+***
+
+# <center><font size=10 color="orange">_Status code_</font>
+
+# <font color="blue">**100**</font>
+
+* ## 100: continue
+
+# <font color="lightgreen">**200**</font>
+
+* ## 200: OK (GET, POST)
+
+* ## 201: Created (PUT)
+
+* ## 204: No Content (DELETE, PUT)
+
+# <font color="yellow">**300**</font>
+
+* ## 301: Moved Permanently
+
+* ## 302: Found
+
+* ## 307: Temporary Redirect
+ 
+* ## 308: Permanent Redirect
+
+# <font color="orange">**400**</font>
+
+* ## 400: Bad Request
+
+* ## 401: Unauthorized
+
+* ## 403: Forbidden
+
+* ## 404: Not Found
+
+* ## 405: Method not allowed
+
+# <font color="#cc2020">**500**</font>
+
+* ## 500: Internal Server Error
+
+* ## 503: Service Unavailable
