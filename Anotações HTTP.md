@@ -774,7 +774,7 @@
 
 * ## 405: Method not allowed
 
-# <font color="#cc2020">**500**</font>
+# <font color="#cc0030">**500**</font>
 
 * ## 500: Internal Server Error
 
