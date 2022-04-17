@@ -1,0 +1,27 @@
+$text-color: orange;
+
+@mixin box-shadow() {
+    $cor: orange;
+    $alpha: 0.6;
+
+    box-shadow: 2px 2px 4px -2px rgba($cor, $alpha)
+}
+
+body {
+    background: #7159c1;
+    color: $text-color;
+}
+
+
+.container {
+    @include box-shadow;
+    width: 200px;
+    height: 200px;
+    background: white;
+    $text-color: blue;
+    color: white;
+    
+    p {
+        color: $text-color;
+    }
+}

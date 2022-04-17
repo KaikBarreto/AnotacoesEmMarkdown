@@ -1,4 +1,4 @@
-# **<center><font size=10 color="orange"  color="lightblue">Protocolo HTTP</font></center>**
+# **<center><font size=10 color="lightblue">Protocolo HTTP</font></center>**
 
 ## **_<font color="cyan">HyperText Transfer Protocol</font>_**
 

@@ -1,4 +1,4 @@
-# Este repositório contém anotações acerca de diversos tópicos do mundo da programação e desenvolvimento front-end. 
+# Este repositório contém anotações acerca de diversos tópicos do mundo da programação e desenvolvimento front-end em Português do Brasil. 
 
 # **ATENÇÃO**
 
