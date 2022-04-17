@@ -1,11 +1,21 @@
 $text-color: orange;
 
-@mixin box-shadow() {
-    $cor: orange;
-    $alpha: 0.6;
-
-    box-shadow: 2px 2px 4px -2px rgba($cor, $alpha)
+@mixin box-shadow($color) {
+    box-shadow: 3px 3px 4px 1px $color
 }
+
+@mixin text-effect($val) {
+    @if $val == danger {
+        color: red;
+    } 
+    @else if $val == alert {
+        color: yellow;
+    } 
+    @else {
+        color: green;
+    }
+}
+
 
 body {
     background: #7159c1;
@@ -14,7 +24,7 @@ body {
 
 
 .container {
-    @include box-shadow;
+    @include box-shadow( rgba(0, 0, 0, 0.6) );
     width: 200px;
     height: 200px;
     background: white;
@@ -22,6 +32,11 @@ body {
     color: white;
     
     p {
+        @include box-shadow(rgba(0,0,0,0.6));
+        background: gray;
+        height: 100px;
+        width: 100px;
         color: $text-color;
+        @include text-effect(none);
     }
 }

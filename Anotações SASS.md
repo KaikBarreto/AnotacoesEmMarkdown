@@ -6,7 +6,7 @@
 
 * ## Um pré-processador CSS que irá dar poder aos estilos
 
-* ## Compila estrutura de código _**<kbd><font color="cyan">.scss</font></kbd>**_ ou _**<kbd><font color="cyan">.sass</font></kbd>**_ para _**<kbd><font color="cyan">.css</font></kbd>**_
+* ## Compila estrutura de código _**<kbd><font color="cyan">.scss</font></kbd>**_ ou </font>_**<kbd><font color="cyan">.sass</font></kbd>**_ para _**<kbd><font color="cyan">.css</font></kbd>**_
 
 ***
 
@@ -30,7 +30,7 @@
 
 ***
 
-# <center>**_Importação de arquivos usando SASS_**
+# <center>**_<font color="orange">Importação de arquivos usando SASS</font>_**
 
 * ## Qual é a utilidade de importar arquivos de StyleSheets?
 
@@ -40,11 +40,11 @@
 
     * ### Uma vez que cada arquivo .scss corresponde a uma parte do estilo geral, a manutenção se torna mais fácil e tangível.
 
-* ## Para um arquivo _**<kbd><font color="cyan">.scss</font></kbd>**_ ser importado, seu nome deve seguir o seguinte modelo:
+* ## Para um arquivo </font>_**<kbd><font color="cyan">.scss</font></kbd>**_ ser importado, seu nome deve seguir o seguinte modelo:
 
     > ### _exemplo.scss
 
-* ## Agora, para importar este arquivo, usa-se a seguinte sintaxe no arquivo _**<kbd><font color="cyan">.scss</font></kbd>**_ principal:
+* ## Agora, para importar este arquivo, usa-se a seguinte sintaxe no arquivo </font>_**<kbd><font color="cyan">.scss</font></kbd>**_ principal:
 
     ```scss
     @import 'exemplo'
@@ -54,7 +54,7 @@
 
 ***
 
-# <center>**_Encadeamento/Indentação_**
+# <center>**_<font color="orange">Encadeamento/Indentação</font>_**
 
 * ## Em arquivos SASS, é possível encadear seletores, gerando escopos.
 
@@ -90,7 +90,7 @@
 
 ***
 
-# <center>**_Variáveis_**
+# <center>**_<font color="orange">Variáveis</font>_**
 
 * ## O SASS declara variáveis da mesma forma que o CSS tradicional, iniciado por um sinal de "$".
 
@@ -102,7 +102,7 @@
     }
     ```
 
-* ## A indentação de arquivos _**<kbd><font color="cyan">.scss</font></kbd>**_ gera escopos, ou seja, variáveis criadas dentro de um escopo não podem ser usadas num escopo acima do dele.
+* ## A indentação de arquivos </font>_**<kbd><font color="cyan">.scss</font></kbd>**_ gera escopos, ou seja, variáveis criadas dentro de um escopo não podem ser usadas num escopo acima do dele.
 
     * ## Exemplo correto:
 
@@ -127,7 +127,7 @@
 
 *** 
 
-# <center>**_Mixins_**
+# <center>**_<font color="orange">Mixins: @mixin/@include</font>_**
 
 * ## Trata-se de uma estrutura que permite guardar um trecho de código que poderá ser reutilizado, como uma função.
 
@@ -139,16 +139,69 @@
 
     ```scss 
     @mixin box-shadow() {
-        $cor: orange;
-        $alpha: 0.6;
-
-        box-shadow: 2px 2px 4px -2px rgba($cor, $alpha)
+        $color: rgba(0, 0, 0, 0.6);
+        box-shadow: 2px 2px 4px -2px $color
     }
 
     .container {
-        @include box-shadow;
+        @include box-shadow();
         background-color: white;
         width: 100px;
         height: 200px;
     }
     ```
+
+* ## Os mixins também podem receber parâmetros:
+
+    ```scss
+    @mixin box-shadow($color) {
+
+        box-shadow: 2px 2px 4px -2px $color
+    }
+
+    .container {
+        @include box-shadow( rgba(0, 0, 0, 0.6) );
+        background-color: white;
+        width: 100px;
+        height: 200px;
+    }
+    ```
+
+***
+
+# <center>**_<font color="orange">Condicionais: @IF/@ELSE</font>_**
+
+* ## Permite criar trechos de código que somente serão aproveitados caso satisfaçam uma determinada condição.
+
+* ## Sua sintaxe é muito semelhante à do JavaScript, porém as condições não necessitam estar entre parênteses.
+
+* ## Usam-se, para a construção de condicionais e retorno de valores booleanos (true/false), as keywords **_@IF</font>_**, **_@ELSE</font>_** e **_@ELSE IF</font>_**
+
+    > ## Exemplos de uso:
+
+    *   ```scss
+        @mixin make-bold($bool) {
+            @if $bool == true {
+                font-weight: bold;
+            }
+        }
+        ```
+
+    *   ```scss
+        @mixin text-effect($val) {
+            @if $val == danger {
+                color: red;
+            } 
+            @else if $val == alert {
+                color: yellow;
+            } 
+            @else {
+                color: green;
+            }
+        }
+        ```
+
+***
+
+# <center>**_Repetições: @FOR @EACH_**
+

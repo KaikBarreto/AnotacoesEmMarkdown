@@ -4,8 +4,8 @@ body {
 }
 
 .container {
-  -webkit-box-shadow: 2px 2px 4px -2px rgba(255, 165, 0, 0.6);
-          box-shadow: 2px 2px 4px -2px rgba(255, 165, 0, 0.6);
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.6);
+          box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.6);
   width: 200px;
   height: 200px;
   background: white;
@@ -13,7 +13,13 @@ body {
 }
 
 .container p {
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.6);
+          box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.6);
+  background: gray;
+  height: 100px;
+  width: 100px;
   color: blue;
+  color: green;
 }
 
 body {
