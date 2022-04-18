@@ -330,5 +330,3 @@
     ```
 
 ***
-
-# <center>**_<font color="orange">Funções</font>_**
