@@ -47,7 +47,7 @@
 * ## Agora, para importar este arquivo, usa-se a seguinte sintaxe no arquivo </font>_**<kbd><font color="cyan">.scss</font></kbd>**_ principal:
 
     ```scss
-    @import 'exemplo'
+    @use 'exemplo'
     ```
 
     * ### Note-se que o nome do arquivo importado é utilizado sem a underline ( _ ) e também sem sua extensão (.scss).
@@ -100,6 +100,16 @@
     body {
         color: $text-color;
     }
+    ```
+
+* ## Também podem ser criadas variáveis compostas, como no javascript, utilizando parênteses. Os itens podem (lista/array) ou não (objeto) ter chaves para seus valores.
+
+    ```scss
+    //exemplo sem chaves para os valores
+    $colors: blue, red, yellow
+
+    //exemplo com chaves para os valores
+    $colors: (color1: blue, color2: red, color3: yellow);
     ```
 
 * ## A indentação de arquivos </font>_**<kbd><font color="cyan">.scss</font></kbd>**_ gera escopos, ou seja, variáveis criadas dentro de um escopo não podem ser usadas num escopo acima do dele.
@@ -203,5 +213,100 @@
 
 ***
 
-# <center>**_Repetições: @FOR @EACH_**
+# <center>**_<font color="orange">Repetições: @FOR @EACH</font>_**
 
+* ## Permite criar repetições para, por exemplo, aplicações de estilos em diferentes classes numeradas.
+
+* ## Utilizam-se as keywords **@for** e **@each**
+
+* ## **Exemplos**: 
+
+    * ## 1. @for: Aplicar um estilo para diversas classes sequenciadas
+
+        ```scss
+        @for $i from 1 to 6 {
+            .text-#{$i} {
+                font-size: 15px * $i
+            }
+        }
+        ```
+
+      * ### Note-se: para inserir num seletor o nome de uma variável, não basta colocar apenas o $ seguido do nome da variável, mas sim colocar isso dentro de um "#{}"
+
+          ```scss
+          .caixa-$numero_da_caixa        // errado
+
+          .caixa-#{$numero_da_caixa}    // certo
+          ```
+
+      * ### Note-se também: a estrutura "**$i from 1 to 6**" é semelhante ao "**while (i < 6)**" do javascript: o código será executado de 1 a 5, ou seja, excluindo o 6.
+
+    ***
+
+    * ## 2. @for each
+
+        * ### Utilizado para gerar uma repetição direcionada a uma coleção de itens.
+
+        ```scss
+        $colors: blue, red, yellow;
+
+        @each $color in $colors {
+            .#{$color}-text {
+                color: $color;
+            }
+        }
+        ```
+
+        > ### Leia-se: **_Para cada $cor em $colors, faça isso..._**
+
+***
+
+# <center>**_<font color="orange">Herança</font>_**
+
+* ## Trata-se da capacidade de um seletor herdar as características já atribuidas a outro seletor e, então, receber outras.
+
+* ## **Exemplo:**
+
+    ```scss
+    .flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body {
+        @extend .flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    ```
+
+***
+
+# <center>**_<font color="orange">Referrencing</font>_**
+
+* ## Trata-se da possibilidade de referência a um pseudoelemento ou pseudoclasse, como o hover de um parágrafo.
+
+    ```scss
+    // Ao invés disso:
+    p {
+        color: red 
+    }
+    p:hover { 
+        color:blue 
+    }
+
+    // Escreve-se isso:
+
+    p {
+        color: red;
+
+        &:hover {
+            color: blue;
+        }
+    }
+    ```
+
+***
+
+# <center>**_<font color="orange">Funções</font>_**
