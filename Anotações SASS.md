@@ -261,6 +261,28 @@
 
 ***
 
+# <center>**_<font color="orange">Funções</font>_**
+
+* ## Permite adicionar a uma variável uma funcionalidade 
+
+* ## Sintaxe semelhante à do JavaScript
+
+    > ## Obs.: Funções podem returnar um valor com o uso da keyword **_@return_**
+
+* ## **Exemplo:**
+
+    ```scss
+    @function set-inverse-color($color) {
+        @if $color == "white" {
+            @return black;
+        } @else if $color == "black" {
+            @return white;
+        }
+    }
+    ```
+
+***
+
 # <center>**_<font color="orange">Herança</font>_**
 
 * ## Trata-se da capacidade de um seletor herdar as características já atribuidas a outro seletor e, então, receber outras.
