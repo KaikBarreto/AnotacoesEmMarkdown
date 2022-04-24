@@ -869,28 +869,29 @@ console.log(allen.tipo) // 'Método "get tipo()" precisa ser implementado'
 
 * ### **Uso de constantes**
 
-```javascript
-// exemplo em JS
-const cart = {
-    quantity: 2,
-    total: 200
-}
+    ```javascript
+    // exemplo em JS
+    const cart = {
+        quantity: 2,
+        total: 200
+    }
 
-// errado
-cart.quantity = 3
+    // errado
+    cart.quantity = 3
 
-// certo
-const newCart = {...cart, quantity: 3}
+    // certo
+    const newCart = {...cart, quantity: 3}
 
-// exemplo em ReactJS
-const [amount, setAmount] = useState(0)
+    // exemplo em ReactJS
+    const [amount, setAmount] = useState(0)
 
-// errado
-amount = 2
+    // errado
+    amount = 2
 
-// certo
-setAmount(2)
-```
+    // certo
+    setAmount(2)
+    ```
+
 ## <font color="magenta">[**Stateless**]</font>
 
 * ### Não guarda **<font color="cyan">estado</font>**
@@ -1030,7 +1031,7 @@ const numbers = [2, 4, 8, 16]
 
 const square = n => n * n
 
-const squaredNumber = numbers.map(square)
+const squaredNumber = numbers.map(square)//[4, 16, 64, 256]
 
 // Exemplo de retorno de função
 // (currying ou aplicação parcial de função)
@@ -1055,5 +1056,285 @@ wait1000(() => console.log("waiting 1s") )
 
     ```javascript
     const people = ["Rafa", "Diego", "Dani", "Rod"]
-    const upperCasePeopleWhoseNameStartsWithD = people.filter(person => person.startsWith("D")).map(dperson => dperson.toUpperCase())
+    const upperCasePeopleWhoseNameStartsWithD = people.filter(person => person.startsWith("D")).map(dperson => dperson.toUpperCase()) // ["DIEGO", "DANI"]
     ```
+
+***
+
+# **<center><font size=6 color="cyan">Assincronismo/JS Assíncrono</font>**
+
+## **<font size=5 color="orange">[Síncrono X Assíncrono]</font>**
+
+* ## **Sistema síncrono** (_synchronous_): uma tarefa é concluida logo após a outra.
+
+    * ### A tarefa anterior precisa ser concluída, para então iniciar a próxima.
+
+    * ### Por padrão, o JavaScript é um sistema síncrono.
+
+    * ### Exemplo: Uma coleção de 3 imagens, em que uma carrega logo após a anterior ter sido carregada.
+
+    ***
+
+* ## **Sistema assíncrono** (_assynchronous_): uma tarefa é executada independentemente da outra.
+
+    * ### O JavaScript poderá usar o assincronismo a seu favor
+
+    * ### Exemplo: Uma coleção de 3 imagens, em que todas são carregadas independentemente do carregamento das outras.
+
+***
+
+## **<font size=6 color="orange">[Callback]</font>**
+
+* ## Significa **_"Chamada de volta"_**
+
+* ## Refere-se a uma função que é passada como argumento para outra função, para que seja _chamada de volta_ em algum momento.
+
+***
+
+## **<font size=6 color="orange">[setTimeout]</font>**
+
+* ### É uma função JavaScript que recebe como argumentos uma outra função (callback function) e um delay em milissegundos. A função passada será chamada e executada após o fim do delay especificado
+
+    ```javascript
+    // setTimeout(function, delay)
+
+    // Exemplo: Escrever algo depois de um segundo
+    setTimeout(function() {
+        console.log("Depois de 1s")
+    }, 1000) 
+    ```
+
+***
+
+## **<center><font size=6 color="orange">[Promise]</font>**
+
+* ### A promessa de que algo irá acontecer, podendo dar certo ou errado, mas que irá acontecer.
+
+* ### Trata-se de um objeto JavaScript com a promessa de que algo será realizado
+
+* ### É usado para operações assíncronas
+
+    * ### Carregar um arquivo
+
+    * ### Leitura de dados de uma API
+
+    ***
+
+* ## Uma promessa poderá ser:
+
+    * ### <font color="lightgrey">**Pending**</font>: Estado inicial, pendente, assim que o Objeto da promessa é iniciado
+
+    * ### <font color="lime">**Fulfilled**</font>: A promessa foi concluída com sucesso
+
+    * ### <font color="scarlet">**Rejected**</font>: A promessa foi rejeitada, houve um erro.
+
+    * ### <font color="skyblue">**Settled**</font>: Seja com _sucesso_ ou _erro_, ela foi finalmente concluída.
+
+    ***
+
+## **<font size=6 color="orange">Promise no código</font>**
+
+* ### Exemplo de sintaxe de uma promessa
+
+    ```javascript
+    let aceitar = true
+
+    console.log("Pedindo uber")
+    // Criando uma promise
+    const promessa = new Promise((resolve, reject) => {
+
+        if(aceitar){
+            return resolve("O carro chegou")
+        } 
+
+        return reject("Pedido negado!")
+
+    })
+
+    console.log("Aguardando...")
+
+    promessa
+    .then(result => console.log(result))
+    .catch(erro => console.log(erro))
+    .finally(() => console.log("Finalizado."))
+
+    // Saída:
+    "
+    Pedindo uber
+    Aguardando...
+    O carro chegou!
+    Finalizado.
+    "
+    ```
+
+    * ### Recapitulando o exemplo: a promessa consiste em pedir um uber, podendo retornar uma solução ("O carro chegou!") ou um erro ("Pedido negado!").
+
+    * ### A callback function da promessa precisa receber os parâmetros **"resolve"** e **"reject"** para solucionar a promessa.
+
+    * ### Os métodos **then()** e **catch()** recebem uma callback function como argumento e servem, respectivamente, para chamá-la no caso de **_fulfilled(resolve)_** ou **_rejected(reject)_**. Já o método **finally()** é responsável por chamar uma função independentemente do resultado.
+
+    ***
+
+## **<font size=6 color="orange">Promises com Fetch</font>**
+
+* ### O comando fetch traz algo de uma url passada como parâmetro
+
+* ### Exemplo:
+
+    ```javascript
+    fetch('https://api.github.com/users/kaikbarreto')
+    ```
+
+    * ### O fetch tem uma estrutura de promise.
+
+        * ### Ou seja, é possível utilizar, sobretudo o método **then()**, assim como os outros.
+
+* ### Também é possível encadear o método **then()**
+
+    ```javascript
+    fetch('https://api.github.com/users/kaikbarreto')
+    .then( resposta => resposta.json())
+    .then( dados => console.log(dados.login))
+    ```
+
+* ### Resultado: acha-se, dentro do JSON da resposta oriunda da URL especificada, os dados, do qual se imprime o login.
+
+* ### Saída: "KaikBarreto" (login do user da URL)
+
+***
+
+## **<font size=6 color="orange">_Axios_</font>**
+
+* ### Trata-se de um **HTTP Client** baseada em promessas, podendo ser usada tanto no browser quanto no Node.js
+
+* ### O método get da biblioteca **Axios** se comporta semelhantemente ao fetch do browser, como uma promise
+
+    ```javascript
+    axios.get("https://api.github.com/users/kaikbarreto")
+    // é semelhante a
+    fetch("https://api.github.com/users/kaikbarreto")
+    ````
+
+***
+
+## **<font size=5 color="orange">_Promises com Axios_</font>**
+
+* ### Exemplo
+
+    ```javascript
+    import axios from 'axios'
+
+    axios
+    .get('https://api.github.com/users/kaikbarreto')
+    .then( response => axios.get(response.data.repos_url))
+    .then( repos => console.log(repos.data))
+    .catch( error => console.log(error))
+    ```
+
+* ## **Promises em paralelo** com Promise all
+
+    ```javascript
+    Promise.all([
+        axios.get("https://api.github.com/users/kaikbarreto"),
+        axios.get("https://api.github.com/users/kaikbarreto/repos")
+    ])
+    .then( responses => {
+        console.log(responses[0].login)
+        console.log(responses[1].length)
+    })
+    ```
+
+    * ### Saída: ["KaikBarreto", 4] (respectivamente o login do usuário e a quantidade de repositórios)
+
+***
+
+## **<center><font size=6 color="orange">Async/Await</font>**
+
+* ### É uma maneira de escrever promessas, tornando mais fácil a visualização por meio de uma função assíncrona.
+
+* ### Syntatic Sugar
+
+* ### Async é uma keyword para declaração de funções assíncronas
+
+* ### Await significa a espera de uma promise.
+
+* ## Sintaxe: 
+
+    * ### Usando **_Async/Await_**
+
+        ```javascript
+        const promessa = new Promise(function(resolve, reject) => {
+            return resolve('ok')
+        })
+
+        
+        ```
+
+    * ### Da forma antiga, faria-se:
+
+        ```javascript
+        const promessa = new Promise(function(resolve, reject) => {
+            return resolve('ok')
+        })
+
+        promessa
+        .then(function(response) {
+            console.log(response)
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
+        .finally(function() {
+            console.log("Isto é impresso sempre.")
+        })
+        ```
+
+    ***
+
+## **<font size=5 color="orange">_Async/Await com Fetch_</font>**
+
+* ### Permite a remodelação de um fetch atribuindo a variáveis o await de promises
+
+    ```javascript
+    async function start() {
+
+        try{
+            const url = "https://api.github.com/users/kaikbarreto"
+            const user = await fetch(url).then(res => res.json())
+            const userRepos = await fetch(user.repos_url).then(repo => repo.json())
+            console.log(userRepos) // imprime a lista de repositórios 
+        } catch(erro) {
+            console.log(erro)
+        } finally {
+            console.log("Isto é impresso sempre.")
+        }
+    }
+
+    start()
+    ```
+
+***
+
+## **<font size=5 color="orange">_Async/Await com Axios_</font>**
+
+```javascript
+import axios from 'axios'
+
+async function fetchRepos() {
+  try {
+    
+    const url = "https://api.github.com/users/kaikbarreto"
+    const user = await axios.get(url)
+    const repos = await axios.get(user.data.repos_url)
+    console.log(repos.data)
+
+
+  } catch(error) {
+    console.log(error)
+  } finally {
+    console.log("Isto é impresso sempre.")
+  }
+}
+
+fetchRepos()
+```
