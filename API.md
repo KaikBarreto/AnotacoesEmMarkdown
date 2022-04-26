@@ -70,4 +70,57 @@
 * ## **<font color="orange">PATCH</font>**
 
     * ### A API recebe informações para update de um registro
-    * 
+
+***
+
+## **<font size=6 color="orange">[API no Backend com Express e Node]</font>**
+
+* ### Inicialização: <kbd><font color="cyan">npm i express</font></kbd>
+
+    * ### Num arquivo index.js, iniciamos o servidor na porta 3000:
+
+        ```javascript
+        const express = require('express')
+        const app = express()
+        app.listen('3000')
+        ```
+    
+## **<font color="orange">[GET]</font>**
+
+* ## Inserindo rotas
+
+    ```javascript
+    // Imprimindo um Hello world na porta 3000
+    app.route('/').get((req, res) => res.send("Hello World"))
+    ```
+
+    ***
+
+## **<font color="orange">[POST]</font>**
+
+* ## Utiliza-se um middleware para especificar o tipo de arquivo
+
+    ```javascript
+    const express = require('express')
+    const app = express()
+    app.listen('3000')
+
+    // middleware
+    app.use(express.json())
+
+    // imprimindo o corpo da requisição no console
+    app.route('/').post((req, res) => console.log(req.body))
+    ```
+
+***
+
+## **<font color="orange">[PUT]</font>**
+
+* ## Editar informações
+
+
+
+***
+
+## **<font color="orange">[DELETE]</font>**
+
