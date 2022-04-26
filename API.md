@@ -70,3 +70,4 @@
 * ## **<font color="orange">PATCH</font>**
 
     * ### A API recebe informações para update de um registro
+    * 
