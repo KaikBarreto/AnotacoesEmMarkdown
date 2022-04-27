@@ -116,11 +116,95 @@
 
 ## **<font color="orange">[PUT]</font>**
 
-* ## Editar informações
+* ## Permite editar informações
 
+    ```javascript
+    app.listen('3000')
 
+    // Middleware
+    app.use(express.json())
+
+    let author = "Kaik"
+
+    app.route('/').get( (req,res) => res.send(author) )
+
+    app.route('/').put((req, res) => {
+        author = req.body.author
+        res.send(author)
+    })
+    ```
 
 ***
 
 ## **<font color="orange">[DELETE]</font>**
+
+* ## Permite deletar informações
+
+    ```javascript
+    app.route('/:identificador').delete( (req, res) => {
+        res.send(req.params.identificador)
+    })
+    // A aplicação recebe uma variável identificadora como um id e depois aparece na resposta (res.send)
+    ```
+
+***
+
+# **<font size=6 color="orange">Parâmetros nas requisições</font>**
+
+* ## **<font color="orange">[Body Parameters]</font>**
+
+    * ### É uma maneira de enviar informações para a API e essas informações não ficarão na URL, ou seja, serão enviadas de forma oculta, no body (corpo) da request.
+
+    * ### Essas informações poderão ser inseridos pelos métodos HTTP: **POST**, **PUT** e **PATCH**.
+
+    * ### Exemplo: pegar o array "livros favoritos" do corpo da request
+
+        ```javascript
+        // middleware
+        app.use(express.json())
+
+        app.route('/').post((req, res) => {
+            const livros_favoritos = req.body
+            res.send(livros_favoritos)
+        })
+        ```
+    ***
+
+* ## **<font color="orange">[Route Parameters]</font>**
+
+    * ### É uma maneira de enviar informações para a API por meio da rota.
+
+    * ### Utiliza-se **_request.params.variavel_** para pegar a variável passada como parâmetro
+
+    * ### Sintaxe:
+
+        ```javascript
+        app.route('/:variavel').get((req, res) => res.send( req.params.variavel ))
+        ```
+
+        * ### Exemplo: criar uma página com o nome que for escrito na rota
+
+            ```javascript
+            app.route('/:nome').get((req, res) => res.send( req.params.nome ))
+            ```
+
+    ***
+
+* ## **<font color="orange">[Query Parameters]</font>**
+
+    * ### É uma maneira de enviar informações para a API através da **URL**
+
+    * ### Numa url, as queries são identificadas por uma interrogação (?) seguida do nome da variável e o seu valor, desta maneira:
+
+        ```
+        www.dominio.com/?variavel=valor
+        ```
+
+    * ### Também é possível concatenar atribuições de variáveis, utilizando o símbolo de E comercial (&)
+
+        ```javascript
+        www.dominio.com/?variavel1=valor1&variavel2=valor2
+        ```
+
+    * ### Sintaxe: 
 

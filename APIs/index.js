@@ -4,8 +4,4 @@ const app = express()
 
 app.listen('3000')
 
-let author = "Kaik"
-
-app.route('/').put( (req,res) => {
-    author = req.body
-})
+app.route('/').get((req, res) => res.send( req.query ))
