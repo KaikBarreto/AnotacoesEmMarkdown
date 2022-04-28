@@ -259,9 +259,89 @@
 
 # **<font size=6 color="orange">API no Front-End com Fetch</font>**
 
+* ## A API Fetch fornece uma interface JavaScript para acessar e manipular partes do pipeline HTTP, tais como os pedidos e respostas. Ela também fornece o método global **<kbd><font color="cyan">fetch()</font></kbd></kbd>** que fornece uma maneira fácil e lógica para buscar recursos de forma assíncrona através da rede.
 
+* ## **<font color="orange">GET</font>**
+
+    * ### Exemplo de uso: imprimir no console a response de um **fetch**, no caso uma lista de users
+
+        ```javascript
+        const url = "http://localhost:5500/api"
+
+        function getUsers() {
+            fetch(url)
+                .then(response => console.log(response.json()))
+                .catch(error => console.error(error))
+        }
+
+        getUsers()
+        ```
+
+    ***
+
+* ## **<font color="orange">GET com parâmetros</font>**
+
+    * ### Exemplo de uso: renderizar no HTML a response de um **fetch**, no caso um user em específico (id "1"), passado como parâmetro na função.
+
+        ```javascript
+        const url = "http://localhost:5500/api"
+
+        function getUser(id) {
+            fetch(`${url}/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    return renderApiResult.innerText = JSON.stringify(data)
+                })
+                .catch(error => console.error(error))
+        }
+        getUser("1")
+        ```
+
+    ***
+
+* ## **<font color="orange">POST</font>**
+
+    * ### Exemplo de uso: Adicionar um usuário (objeto) à lista de usuários da API
+
+        ```javascript
+        function addUser(newUser) {
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(newUser),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then(response => response.json())
+                .then(data => alertAPI.innerText = data)
+                .catch(error => console.error(error))
+        }
+
+        const newUser = {
+            name: "Kaik Barreto",
+            avatar: "https://avatars.githubusercontent.com/u/99971589?v=4",
+            city: "Rio de Janeiro"
+        }
+
+        addUser(newUser)
+        ```
+
+        > ### Nestes casos, o **FETCH** pode receber um segundo parâmetro (do tipo objeto) especificando sua funcionalidade, como o método (method), que, no exemplo, é **"POST"**
+
+    ***
+
+* ## **<font color="orange">PUT</font>**
+
+    * ### Alterar as informações (ex: nome, cidade etc.)
+     
+        ```javascript
+    
+        ```
+
+    ***
+
+* ## **<font color="orange">DELETE</font>**
 
 ***
 
 # **<font size=6 color="orange">API no Front-End com Axios</font>**
-
