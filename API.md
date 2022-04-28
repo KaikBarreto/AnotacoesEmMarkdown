@@ -263,7 +263,7 @@
 
 * ## **<font color="orange">GET</font>**
 
-    * ### Exemplo de uso: imprimir no console a response de um **fetch**, no caso uma lista de users
+    * ## Exemplo de uso: imprimir no console a response de um **fetch**, no caso uma lista de users
 
         ```javascript
         const url = "http://localhost:5500/api"
@@ -281,7 +281,7 @@
 
 * ## **<font color="orange">GET com parâmetros</font>**
 
-    * ### Exemplo de uso: renderizar no HTML a response de um **fetch**, no caso um user em específico (id "1"), passado como parâmetro na função.
+    * ## Exemplo de uso: renderizar no HTML a response de um **fetch**, no caso um user em específico (id "1"), passado como parâmetro na função.
 
         ```javascript
         const url = "http://localhost:5500/api"
@@ -301,7 +301,7 @@
 
 * ## **<font color="orange">POST</font>**
 
-    * ### Exemplo de uso: Adicionar um usuário (objeto) à lista de usuários da API
+    * ## Exemplo de uso: Adicionar um usuário (objeto) à lista de usuários da API
 
         ```javascript
         function addUser(newUser) {
@@ -326,21 +326,63 @@
         addUser(newUser)
         ```
 
-        > ### Nestes casos, o **FETCH** pode receber um segundo parâmetro (do tipo objeto) especificando sua funcionalidade, como o método (method), que, no exemplo, é **"POST"**
+        > ## Nestes casos, o **FETCH** pode receber um segundo parâmetro (do tipo objeto) especificando sua funcionalidade, como o método (method), que, no exemplo, é **"POST"**
 
     ***
 
 * ## **<font color="orange">PUT</font>**
 
-    * ### Alterar as informações (ex: nome, cidade etc.)
+    * ## Alterar as informações (ex: nome, cidade etc.)
      
         ```javascript
-    
+        // Função que recebe id do user a ser alterado e os dados do userAtualizado
+        function updateUser(id, updatedUser) {
+            fetch(`${url}/${id}`, {
+                method: "PUT",
+                body: JSON.stringify(updatedUser),
+                headers: {
+                    "Content-type": "application/json; charset: UTF-8"
+                }
+            })
+                .then(response => response.json())
+                .then(data => alertAPI.innerText = data)
+                .catch(error => console.error(error))
+        }
+        // dados do usuário que substituirá o antigo
+        const updatedUser = {
+            name: "Marcelo Clóvis",
+            avatar: "https://picsum.photos/200/300",
+            city: "Recife"
+        }
+        // substituição do user de ID 1 para o novo
+        updateUser("1", updatedUser)
         ```
+
+        > ## Saída: O user que possuia o id "1" (argumento passado na função) passa a ser igual a updatedUser, ou seja, recebe novos valores através do método HTTP **PUT**
 
     ***
 
 * ## **<font color="orange">DELETE</font>**
+
+    * ## Exemplo de uso: deletar um usuário específico de uma API de usuários
+
+        ```javascript
+        function deleteUser(id) {
+            fetch(`${url}/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then(response => response.json())
+                .then(data => alertAPI.innerText = data)
+                .catch(error => console.error(error))
+        }
+
+        deleteUser(1)
+        ```
+
+        > ## O método **DELETE** não necessita de body pois não envia nenhum dado para a API.
 
 ***
 
