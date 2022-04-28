@@ -208,3 +208,60 @@
 
     * ### Sintaxe: 
 
+        ```javascript
+        app.route('/').get((req, res) => res.send( req.query ))
+        ```
+        * ### Leia-se: pegar da rota '/' toda a query, ou seja, o objeto com todas as variáveis inseridas na url
+
+***
+
+# **<font size=6 color="orange">Consumindo API com NodeJS</font>**
+
+* ## Neste caso, a API do GitHub (https://api.github.com)
+
+    * ### Esta API, por exemplo, possui informações sobre cada usuário em URL's como:
+
+        > https://api.github.com/users/kaikbarreto
+
+* ## API's acessíveis pela URL são ditas públicas, ou seja, não necessitam de autenticação.
+
+## **<font color="orange">Consumindo com Axios</font>**
+
+* ### Para a instalação, basta um <kbd><font color="cyan">npm i axios</font></kbd>
+
+* ### Importando o Axios para o projeto/arquivo JavaScript
+
+    ```javascript
+    const axios = require("axios")
+    ```
+
+* ### Abrindo servidor na porta 3000 com ExpressJS
+
+    ```javascript
+    const axios = require('express')
+    const express = require('express')
+    const app = express()
+
+    app.listen('3000')
+    ```
+
+* ### Abrindo a rota '/', fazendo a requisição da URL com o método **GET** do Axios e então mandar o resultado deste GET como resposta.
+
+    ```javascript
+    app.route('/').get((req, res) => {
+        axios.get("https://api.github.com/users/kaikbarreto")
+        .then(result => res.send(result.data))
+        .catch(error => console.log(error))
+    })
+    ```
+
+***
+
+# **<font size=6 color="orange">API no Front-End com Fetch</font>**
+
+
+
+***
+
+# **<font size=6 color="orange">API no Front-End com Axios</font>**
+
