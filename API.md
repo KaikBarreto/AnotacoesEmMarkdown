@@ -387,3 +387,154 @@
 ***
 
 # **<font size=6 color="orange">API no Front-End com Axios</font>**
+
+* ## Antes de tudo, é importante **importar** o axios no projeto atual:
+
+    ```html
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    ```
+
+* ## Com Axios também é possível utilizar os métodos **then()** e **catch()**, porém, nos exemplos será usada a estrutura de função assíncrona **(async/await)**
+
+    ***
+
+* ## **<font color="orange">GET</font>**
+
+  * ## Como se está usando a estrutura de async function, os valores obtidos pelos métodos HTTP são guardados em variáveis
+
+      * ### Buscar os dados de uma lista de usuários
+
+          ```javascript
+          const url = "http://localhost:5500/api"
+
+          async function getUsers() {
+              try {
+                  const response = await axios.get(url)
+                  console.log(response.data)
+
+              } catch (error) {
+                  console.error(error)
+              }
+          }
+
+          getUsers()
+          ```
+      
+      * ### Inserindo os dados do **GET** em um elemento HTML
+
+          * HTML
+              ```html
+              <div id="apiResult">
+                  Olá
+              </div>
+              ``` 
+          * JS
+              ```javascript
+              ...try {
+                  const response = await axios.get(url)
+                  apiResult.innerText = JSON.stringify(response.data)
+              }
+              ```
+
+    ***  
+
+
+
+
+
+
+* ## **<font color="orange">GET com parâmetros</font>**
+
+  * ### Buscar um usuário específico (no caso, de ID igual a 1) de uma lista de usuários e mostrar seus dados numa página HTML
+
+        * ## HTML
+ 
+            ```html
+            <p id="userName"></p>
+            <p id="userCity"></p>
+            <p id="userID"></p>
+            <img src="" id="userAvatar" /> 
+            ```
+
+        * ## JS
+
+            ```javascript
+            async function getUser(id) {
+                try {
+                    const response = await axios.get(`${url}/${id}`)
+                    const data = response.data
+                    userName.innerText = data.name
+                    userCity.innerText = data.city
+                    userAvatar.src = data.avatar
+                    userID.innerText = data.id
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+            getUser(1)
+            ```
+
+    ***
+
+* ## **<font color="orange">POST</font>**
+
+    * ### Adicionar um novo usuário na lista de usuários da API e mostrar a resposta da API no console
+
+        ```javascript
+        async function addNewUser(newUser) {
+            try {
+                const response = await axios.post(url, newUser)
+                console.log(response.data)
+            }catch(error) {
+                console.error(error)
+            } 
+        }
+
+        const newUser = {
+            name: "Kaik Barreto",
+            city: "Rio de Janeiro",
+            avatar: "https://picsum.photos/200/300"
+        }
+        addNewUser(newUser)
+        ```
+
+    ***
+
+* ## **<font color="orange">PUT</font>**
+
+    * ### Atualizar os dados de um usuário da lista de usuários da API e imprimir no console a response
+
+        ```javascript
+        async function updateUser(id, updatedUser) {
+            try {
+                const response = await axios.put(`${url}/${id}`, updatedUser)
+                console.log(response)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        const updatedUser = {
+            name: "Marcelo Calvis",
+            avatar: "https://picsum.photos/200/300",
+            city: "Recife"
+
+        }
+        updateUser(1, updatedUser)
+        ```
+***
+
+* ## **<font color="orange">DELETE</font>**
+
+    * ### Deletar um usuário da lista de usuários da API
+
+        ```javascript 
+        async function deleteUser(id) {
+            try {
+                const response = await axios.delete(`${url}/${id}`)
+                console.log(response)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        deleteUser(1)
+        ```
