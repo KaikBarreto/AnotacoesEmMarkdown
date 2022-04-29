@@ -8,8 +8,8 @@
 
     ### Exemplo real:
     
-    ![Imagem Exemplo 1 Real API's](ex_api.png)
-    ![Imagem Exemplo 2 Real API's](ex_api2.png)
+    ![Imagem Exemplo 1 Real API's](img/ex_api.png)
+    ![Imagem Exemplo 2 Real API's](img/ex_api2.png)
 
 ***
 

@@ -289,7 +289,7 @@
 
 <center>
 
-![diagrama das hash values](./hash.png)
+![diagrama das hash values](./img/hash.png)
 </center>
 
 ***
@@ -298,7 +298,7 @@
 
 * ### É um ponteiro, que apontará em que momento da história (commit) estamos situados
 
-![](./head.png)
+![](./img/head.png)
 
 *** 
 

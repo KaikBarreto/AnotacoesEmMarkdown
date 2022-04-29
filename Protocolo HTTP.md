@@ -414,7 +414,7 @@
 
     * ## Idempotente
 
-        ## <center><img src="idempotence.png">
+        ## <center><img src="./img/idempotence.png">
 
         * ### Ao executar o método, a resposta deverá ser sempre a mesma    
 
