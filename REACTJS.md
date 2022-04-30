@@ -428,25 +428,96 @@
 
     * ### É um Hook utilizado para 
 
+    * ### O **useEffect** é executado automaticamente **_assim que a interface é renderizada_**
+
     * ### **Sintaxe**:
 
         * ### recebe como parâmetros uma função **_(corpo)_** e um array **_(dependências)_**
 
             ```jsx
             useEffect(() => {
-                // corpo
+                // corpo do useEffect
             }, []) // array de dependências
             ```
+
+        * ### O array de dependências recebe os estados de que o useEffect depende.
+
+            * #### O array vazio significa que o useEffect será realizado uma única vez
+
+            * #### Ao inserir um estado nas dependências, toda vez que este estado for atualizado o useEffect será executado novamente
+
+            * #### **Exemplo:**
+
+                ```jsx
+                useEffect(() => {
+                    console.log("Alguém entrou na lista")
+                }, [lista])
+                // toda vez que o estado da lista é alterado, o useEffect é disparado, imprimindo no console que "Alguém entrou na lista"
+                ```
+
+        ***
+
     * ### **Exemplo de uso:** 
 
+        ### Imprimir no console uma mensagem assim que a interface for renderizada
+
         ```jsx
-        
+        useEffect(() => {
+            console.log("useEffect foi chamado!")
+        }, [])
         ```
 
     ***
 
 * ## **<font color=orange size=5>[Consumindo API]</font>**
 
+    ```jsx
+    import React, { useState, useEffect } from 'react'
+
+    function Home() {
+        const [user, setUser] = useState({ name: '', avatar: '' })
+
+        useEffect(() => {
+            fetch("https://api.github.com/users/kaikbarreto")
+                .then(response => response.json())
+                .then(data => {
+                    setUser({
+                        name: data.name,
+                        avatar: data.avatar_url
+                    })
+                })
+        }, [])
+
+        return (
+            <header>
+                <h1>Lista de presença</h1>
+                <div>
+                    <strong>{user.name}</strong>
+                    <img src={user.avatar} alt="Foto de perfil" />
+                </div>
+            </header>
+        )
+
+    export default Home
+    ```
+
     ***
 
 * ## **<font color=orange size=5>[useEffect Async]</font>**
+
+    ```jsx
+    useEffect(() => {
+        async function getUser(userUrl) {
+            const url = userUrl
+            const response = await fetch(url)
+            const data = await response.json()
+
+            setUser({
+                name: data.name,
+                avatar: data.avatar_url
+            })
+        }
+
+        getUser("https://api.github.com/users/kaikbarreto")
+    }, [])
+    ```
