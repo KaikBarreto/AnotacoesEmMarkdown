@@ -575,6 +575,16 @@
                 <Route path="/" element={<Home />} />
                 ```
 
+    * ### Link
+
+        * #### Possui sintaxe semelhante a uma tag `<a>` do HTML, porém, no lugar do `href`, usamos o **to**
+
+            ```jsx
+            <Link to="/">Home</Link>
+            <Link to="/Sobre">Sobre</Link>
+            <Link to="/Contato">Contato</Link>
+            ```
+
 * ## **Aplicação:**
 
     ```jsx
