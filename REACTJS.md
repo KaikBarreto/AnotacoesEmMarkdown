@@ -602,3 +602,13 @@
 
     </Router>
     ```
+
+    * ### Também é possível aplicar Route Params nas rotas:
+
+        ```jsx
+        <Route path="/pessoa/:id" element={<Pessoa />} />
+        ```
+
+        * ### Assim, há uma rota para cada pessoa, baseada no ID passado na rota.
+
+        * ### De forma que, ao acessar `"/pessoa/10"`, encontra-se a pessoa de ID 10.
